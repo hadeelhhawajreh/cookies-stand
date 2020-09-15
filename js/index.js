@@ -98,14 +98,13 @@ function tfoot(){
   for (var i = 0; i < hours.length; i ++){
     var totalcol = 0;
     for (var j =0; j < cities.length; j++){
-      totalcol += cities[j].numofcook[i];
+      totalcol += numofcook[i];
     }
     empty.push(totalcol);
   }
   var footer = document.getElementById('div-table');
   //add 'total' at the end of raw
   var tr = document.createElement('tr');
-  tr.id = 'total-row';
 
   var td = document.createElement('td');
   td.textContent = 'Total';
