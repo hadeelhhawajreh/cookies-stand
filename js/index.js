@@ -70,7 +70,8 @@ City.prototype.render=function(){
 
 
   }
-
+  tableHead();
+  tfoot();
   function tableHead(){
     var table = document.getElementById('div-table');
     var tr = document.createElement('tr');
@@ -80,18 +81,17 @@ City.prototype.render=function(){
   
     for (var i = 0; i< hours.length; i++){
       th = document.createElement('th');
-      th.textContent = hours[i] +'\t';
+      th.textContent = hours[i] ;
       tr.appendChild(th);
       if (i === hours.length-1){
         th = document.createElement('th');
-        th.textContent = 'Daily Location Total';
+        th.textContent = 'Daily City Total';
         tr.appendChild(th);
         table.appendChild(tr);
       }
     }
   }
-  tableHead();
-  tfoot();
+  
   //calculate hourly total cookies for all five stores.
 function tfoot(){
   var empty = [];
