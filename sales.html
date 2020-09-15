@@ -1,27 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
-    <title>Salmon Cookies- </title>
+
 </head>
+<body id="div-sales">
 
-<body >
-    <header>
-        <h1>
-            Salmon Cookies ...
-        </h1>
-    </header>
-    <figure>
-        <img src="images/img.jpg" alt="image 1">
-    </figure>
-    <div  id="div-sales">
+<h1> COOKIES -STAND LAB 6 AND LAB 7</h1>
+<hr>
 
-    </div>
-    <script src="js/app.js">
-    </script>
+<figure>
+  <img src="images/img.jpg" alt="image 1">
+</figure>
+
+<hr>
+
+<div id="div-table">
+
+  <div id="total-row"></div>
+
+</div>
+<hr>
+    <!--
+        Using object 
+        var seattle={
+    name: 'seattle',
+    minCus:23,
+    maxCus:65,
+    total:0,
+    numofcook:[],
+    arr:[],
+    
+    avgCookies:6.3,
+    CusPerHours: function(){
+
+        for (let index = 0; index < hours.length; index++) {
+           var i= getRandomNumber(this.minCus,this.maxCus);
+            // console.log(i);
+            this.arr.push(i);
+            
+        }
+      },
+      cookforper:function(){
+          for(var i=0;i<hours.length;i++){
+              var x=Math.floor( this.arr[i]*this.avgCookies);
+              console.log(x);
+              this.numofcook.push(x);
+
+          }
+      },
+      render: function(){
+        var parentElement = document.getElementById('div-sales');
+    
+        var article = document.createElement('article');
+        parentElement.appendChild(article);
+    
+        var h2 = document.createElement('h2');
+        h2.textContent = this.name;
+        article.appendChild(h2);
+    
+        var p2 = document.createElement('p');
+        p2.textContent = 'The maximum number of customers per hour is : '+ this.maxCus;
+        article.appendChild(p2);
+        var p3 = document.createElement('p');
+        p3.textContent = ' The minimum number of customers per hour is :'+ this.minCus;
+        article.appendChild(p3);
+       
+        var p = document.createElement('p');
+        p.textContent ='The Total is ' +this.totals();
+        article.appendChild(p);
+        var ul = document.createElement('ul');
+        article.appendChild(ul);
+        for(var i = 0; i <hours.length; i++){
+          var li = document.createElement('li');
+          li.textContent =hours[i]+': '+ this.numofcook[i] +' Cookies';
+          ul.appendChild(li);
+
+        }
+        li.textContent='Total : '+this.totals() +' Cookies';
+        ul.appendChild(li);
+
+
+      },
+      totals:function(){
+          for (let j = 0; j <this.arr.length; j++) {
+              this.total+=this.arr[j];
+          }
+          console.log(this.total);
+          return this.total;
+      }
+      
+
+
+};
+
+  seattle.CusPerHours(this.minCus,this.maxCus);
+//   console.log(this.arr);
+  seattle.render();
+  seattle.totals();
+  seattle.cookforper();
+  console.log('33333333333333333333333333333333333333333');
+  console.log(this.numofcook);
+
+  //Tokyo	3	24	1.2
+
+var arr=[];
+var Tokyo={
+    name: 'Tokyo',
+    minCus:3,
+    maxCus:24,
+    total:0,
+    avgCookies:1.2,
+    CusPerHours: function(){
+
+        for (let index = 0; index < hours.length; index++) {
+           var i= getRandomNumber(this.minCus,this.maxCus);
+            console.log(i);
+            arr.push(i);
+            
+        }
+      },
+      render: function(){
+        var parentElement = document.getElementById('div-sales');
+    
+        var article = document.createElement('article');
+        parentElement.appendChild(article);
+        var h2 = document.createElement('h2');
+        h2.textContent = this.name;
+        article.appendChild(h2);
+    
+       
+        var p2 = document.createElement('p');
+        p2.textContent = 'The maximum number of customers per hour is : '+ this.maxCus;
+        article.appendChild(p2);
+        var p3 = document.createElement('p');
+        p3.textContent = ' The minimum number of customers per hour is :'+ this.minCus;
+        article.appendChild(p3);
+       
+        var p = document.createElement('p');
+        p.textContent ='The Total is ' +this.totals();
+        article.appendChild(p);
+
+        var ul = document.createElement('ul');
+        article.appendChild(ul);
+        for(var i = 0; i < arr.length; i++){
+          var li = document.createElement('li');
+          li.textContent =hours[i]+': '+ arr[i]+' Cookies';
+          ul.appendChild(li);
+
+        }
+        li.textContent='Total : '+this.totals() +' Cookies';
+        ul.appendChild(li);
+
+
+      },
+      totals:function(){
+          for (let j = 0; j < arr.length; j++) {
+              this.total+=arr[j];
+          }
+          console.log(this.total);
+          return this.total;
+      }
+      
+
+
+};
+
+ 
+Tokyo.CusPerHours(this.minCus,this.maxCus);
+//   console.log(arr);
+Tokyo.render();
+Tokyo.totals();
+
+
+//Dubai	11	38	3.7
+
+
+var arr=[];
+var Dubai={
+    name: 'Dubai',
+    minCus:11,
+    maxCus:38,
+    total:0,
+    avgCookies:3.7,
+    CusPerHours: function(){
+
+        for (let index = 0; index < hours.length; index++) {
+           var i= getRandomNumber(this.minCus,this.maxCus);
+            console.log(i);
+            arr.push(i);
+            
+        }
+      },
+      render: function(){
+        var parentElement = document.getElementById('div-sales');
+    
+        var article = document.createElement('article');
+        parentElement.appendChild(article);
+    
+        var h2 = document.createElement('h2');
+        h2.textContent = this.name;
+        article.appendChild(h2);
+    
+        var p2 = document.createElement('p');
+        p2.textContent = 'The maximum number of customers per hour is : '+ this.maxCus;
+        article.appendChild(p2);
+        var p3 = document.createElement('p');
+        p3.textContent = ' The minimum number of customers per hour is :'+ this.minCus;
+        article.appendChild(p3);
+        var p = document.createElement('p');
+        p.textContent ='The Total is ' +this.totals();
+        article.appendChild(p);
+    
+       
+        var ul = document.createElement('ul');
+        article.appendChild(ul);
+        for(var i = 0; i < arr.length; i++){
+          var li = document.createElement('li');
+          li.textContent =hours[i]+': '+ arr[i]+' Cookies';
+          ul.appendChild(li);
+
+        }
+        li.textContent='Total : '+this.totals() +' Cookies';
+        ul.appendChild(li);
+
+
+      },
+      totals:function(){
+          for (let j = 0; j < arr.length; j++) {
+              this.total+=arr[j];
+          }
+          console.log(this.total);
+          return this.total;
+      }
+      
+
+
+};
+
+Dubai.CusPerHours(this.minCus,this.maxCus);
+//   console.log(arr);
+Dubai.render();
+Dubai.totals();
+
+//Paris	20	38	2.3
+//Lima	2	16	4.6
+
+
+var arr=[];
+var Paris={
+    name: 'Paris',
+    minCus:20,
+    maxCus:38,
+    total:0,
+    avgCookies:2.3,
+    CusPerHours: function(){
+
+        for (let index = 0; index < hours.length; index++) {
+           var i= getRandomNumber(this.minCus,this.maxCus);
+            console.log(i);
+            arr.push(i);
+            
+        }
+      },
+      render: function(){
+        var parentElement = document.getElementById('div-sales');
+    
+        var article = document.createElement('article');
+        parentElement.appendChild(article);
+    
+        var h2 = document.createElement('h2');
+        h2.textContent = this.name;
+        article.appendChild(h2);
+        var p2 = document.createElement('p');
+        p2.textContent = 'The maximum number of customers per hour is : '+ this.maxCus;
+        article.appendChild(p2);
+        var p3 = document.createElement('p');
+        p3.textContent = ' The minimum number of customers per hour is :'+ this.minCus;
+        article.appendChild(p3);
+       
+        var p = document.createElement('p');
+        p.textContent ='The Total is ' +this.totals();
+        article.appendChild(p);
+        var ul = document.createElement('ul');
+        article.appendChild(ul);
+        for(var i = 0; i < arr.length; i++){
+          var li = document.createElement('li');
+          li.textContent =hours[i]+': '+ arr[i]+' Cookies';
+          ul.appendChild(li);
+
+        }
+        li.textContent='Total : '+this.totals() +' Cookies';
+        ul.appendChild(li);
+
+
+      },
+      totals:function(){
+          for (let j = 0; j < arr.length; j++) {
+              this.total+=arr[j];
+          }
+          console.log(this.total);
+          return this.total;
+      }
+      
+
+
+};
+
+Paris.CusPerHours(this.minCus,this.maxCus);
+//   console.log(arr);
+Paris.render();
+Paris.totals();
+
+//Lima	2	16	4.6
+
+var arr=[];
+var Lima={
+    name: 'Lima',
+    minCus:2,
+    maxCus:16,
+    total:0,
+    avgCookies:4.6,
+    CusPerHours: function(){
+
+        for (let index = 0; index < hours.length; index++) {
+           var i= getRandomNumber(this.minCus,this.maxCus);
+            console.log(i);
+            arr.push(i);
+            
+        }
+      },
+      render: function(){
+        var parentElement = document.getElementById('div-sales');
+    
+        var article = document.createElement('article');
+        parentElement.appendChild(article);
+    
+        var h2 = document.createElement('h2');
+        h2.textContent = this.name;
+        article.appendChild(h2);
+    
+        var p2 = document.createElement('p');
+        p2.textContent = 'The maximum number of customers per hour is : '+ this.maxCus;
+        article.appendChild(p2);
+        var p3 = document.createElement('p');
+        p3.textContent = ' The minimum number of customers per hour is :'+ this.minCus;
+        article.appendChild(p3);
+        
+        var p = document.createElement('p');
+        p.textContent ='The Total is ' +this.totals();
+        article.appendChild(p);
+    
+        var ul = document.createElement('ul');
+        article.appendChild(ul);
+        for(var i = 0; i < arr.length; i++){
+          var li = document.createElement('li');
+          li.textContent =hours[i]+': '+ arr[i]+' Cookies';
+          ul.appendChild(li);
+
+        }
+        li.textContent='Total : '+this.totals() +' Cookies';
+        ul.appendChild(li);
+
+
+      },
+      totals:function(){
+          for (let j = 0; j < arr.length; j++) {
+              this.total+=arr[j];
+          }
+          console.log(this.total);
+          return this.total;
+      }
+      
+
+
+};
+
+Lima.CusPerHours(this.minCus,this.maxCus);
+//   console.log(arr);
+Lima.render();
+Lima.totals();
+
+
+console.table(Lima);
+    -->
+
+<script src="js/index.js"></script>
+    
 </body>
-
 </html>
