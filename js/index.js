@@ -21,7 +21,6 @@ function City(name, minCus, maxCus, avgCookies) {
 City.prototype.CusPerHours=function(){
   for (let index = 0; index < hours.length; index++) {
     var i = getRandomNumber(this.minCus, this.maxCus);
-    console.log('array one');
     console.log(i);
     this.arr.push(i);
 
@@ -71,7 +70,7 @@ City.prototype.render=function(){
 
   }
   tableHead();
-  tfoot();
+ 
   function tableHead(){
     var table = document.getElementById('div-table');
     var tr = document.createElement('tr');
@@ -91,7 +90,38 @@ City.prototype.render=function(){
       }
     }
   }
+  var form= document.getElementById('mainForm');
+  form.addEventListener('submit',function(event){
+    event.preventDefault();
+    console.log(event);
+    var name = event.target.nname.value;
+    
+
+  console.log('name: ', name);
+  var min=event.target.mminNum.value;
+  min=Number(min);
+
+  console.log('min: ', min);
+  var max=event.target.mmaxNum.value;
+  max=Number(max);
+  console.log('max: ', max);
+  var avg=event.target.avgNum.value;
+  avg=Number(avg);
+  avg=Number(avg);
+  console.log('avg: ', avg);
+  var newc=new City(name,min,max,avg);
+
+ 
+
+  newc.CusPerHours();
+  newc.cookforper();
+  newc.render();
   
+
+  });
+  
+
+
   //calculate hourly total cookies for all five stores.
 function tfoot(){
   var empty = [];
@@ -126,6 +156,7 @@ function tfoot(){
 
   footer.appendChild(tr);
 }
+tfoot();
 //   Seattle	23	65	6.3
 // Tokyo	3	24	1.2
 // Dubai	11	38	3.7
@@ -133,11 +164,11 @@ function tfoot(){
 // Lima	2	16	4.6
 var s=new City('seattle',23,65,6.3);
 
-function renderStore() {
-  for (var i = 0; i < allStore.length; i++) {
-    cities[i].render();
-  }
-}
+// function renderStore() {
+//   for (var i = 0; i < allStore.length; i++) {
+//     cities[i].render();
+//   }
+// }
 
 
 s.CusPerHours();
@@ -148,13 +179,13 @@ t.CusPerHours();
 t.cookforper();
 t.render();
 var d=new City('Dubai',11,38,3.7);
-t.CusPerHours();
-t.cookforper();
-t.render();
+d.CusPerHours();
+d.cookforper();
+d.render();
 var p=new City('Paris',20,38,2.3);
-t.CusPerHours();
-t.cookforper();
-t.render();
+p.CusPerHours();
+p.cookforper();
+p.render();
 var l=new City('Lima',2,16,4.6);
 l.CusPerHours();
 l.cookforper();

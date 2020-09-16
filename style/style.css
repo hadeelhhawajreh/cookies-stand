@@ -3,6 +3,8 @@
 * {
     font-family: 'Noto Sans TC', sans-serif;
     font-family: 'Open Sans', sans-serif;
+    margin: 5px;
+    padding: 2px;
 }
 
 h1{
@@ -24,10 +26,8 @@ ul li{
 
 
 }
-.div-body {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
+
+
 div {
     display: block;
 }
@@ -40,8 +40,21 @@ div {
     margin-top: 40px !important;
     padding-bottom: 0 !important;
 }
-ul li{
+#ulist li{
     list-style: none;
     display: inline;
     padding: 20px;
 font-size: 25px;}
+body{
+    font-size: 20px;
+
+}
+ tr td{
+     margin-top: 20px;
+     padding: 5px;
+     margin: auto;
+     text-align: center;
+
+    border: 1px solid beige;
+    border-collapse: collapse;
+}
