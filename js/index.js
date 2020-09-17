@@ -1,5 +1,6 @@
 'use strict';
 var cities=[];
+var emptyArr=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var hours = [' 6am ', ' 7am ', ' 8am ', ' 9am ', ' 10am ', ' 11am ', ' 12pm ', ' 1pm ', ' 2pm ', ' 3pm ', ' 4pm ', ' 5pm ', ' 6pm ', ' 7pm '];
 function getRandomNumber(min, max) {
   var random = Math.random(); // 0 - 1
@@ -24,10 +25,7 @@ City.prototype.CusPerHours=function(){
     console.log(i);
     this.arr.push(i);
 
-  }
-
-};
-
+  }};
 
 
 City.prototype.cookforper=function(){
@@ -35,20 +33,22 @@ City.prototype.cookforper=function(){
     var x = Math.ceil(this.arr[i] * this.avgCookies);
     console.log(x);
     this.numofcook.push(x);
+    emptyArr[i]+=this.numofcook[i];
   }
-
 };
 City.prototype.totals=function(){
   for (let j = 0; j < hours.length; j++) {
     this.total += this.numofcook[j];
+    emptyArr[15]+=this.total;
+
   }
   console.log(this.total);
+
   return this.total;
 
 };
 City.prototype.render=function(){
   this.cookforper();
-
     var table = document.getElementById('div-table');
     // make a tr
     var tr = document.createElement('tr');
@@ -65,14 +65,11 @@ City.prototype.render=function(){
     td.textContent = this.totals();
     tr.appendChild(td);
     table.appendChild(tr);
-
-
-
   }
   tableHead();
- 
+  var table;
   function tableHead(){
-    var table = document.getElementById('div-table');
+     table = document.getElementById('div-table');
     var tr = document.createElement('tr');
     var th = document.createElement('th');
     th.textContent = ' ';
@@ -110,53 +107,38 @@ City.prototype.render=function(){
   avg=Number(avg);
   console.log('avg: ', avg);
   var newc=new City(name,min,max,avg);
-
- 
-
   newc.CusPerHours();
   newc.cookforper();
   newc.render();
-  
-
   });
   
 
 
   //calculate hourly total cookies for all five stores.
 function tfoot(){
-  var empty = [];
-  for (var i = 0; i < hours.length; i ++){
-    var totalcol = 0;
-    for (var j =0; j < cities.length; j++){
-      totalcol += numofcook[i];
-    }
-    empty.push(totalcol);
+var lastR=document.createElement('tr');
+table.appendChild(lastR);
+var td15;
+for(var i=0;i<=hours.length+1;i++){
+  if(i==0){
+     td15=document.createElement('td');
+  lastR.appendChild(td15);
+  td15.textContent='Total of coulmns';
   }
-  var footer = document.getElementById('div-table');
-  //add 'total' at the end of raw
-  var tr = document.createElement('tr');
+  else{
+   td15=document.createElement('td');
+  lastR.appendChild(td15);
+  td15.textContent=emptyArr[i-1];
+  }
 
-  var td = document.createElement('td');
-  td.textContent = 'Total';
-  tr.appendChild(td);
-  //print last row.
-  for (i = 0; i < hours.length; i++){
-    td = document.createElement('td');
-    td.textContent = empty[i];
-    tr.appendChild(td);
-  }
-  //total cookies from all stores.
-  var totalcookies = 0;
-  for (i =0;i<hours.length;i++){
-    totalcookies += empty[i];
-  }
-  td = document.createElement('td');
-  td.textContent = totalcookies;
-  tr.appendChild(td);
-
-  footer.appendChild(tr);
 }
-tfoot();
+// td15=document.createElement('td');
+//   lastR.appendChild(td15);
+//   td15.textContent=this.total();
+//   emptyArr[15]+=this.total;
+
+
+}
 //   Seattle	23	65	6.3
 // Tokyo	3	24	1.2
 // Dubai	11	38	3.7
@@ -190,7 +172,7 @@ var l=new City('Lima',2,16,4.6);
 l.CusPerHours();
 l.cookforper();
 l.render();
-
+tfoot();
 
 
 // // //////////////////////Using object 
