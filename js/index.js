@@ -4,8 +4,7 @@ var emptyArr=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var hours = [' 6am ', ' 7am ', ' 8am ', ' 9am ', ' 10am ', ' 11am ', ' 12pm ', ' 1pm ', ' 2pm ', ' 3pm ', ' 4pm ', ' 5pm ', ' 6pm ', ' 7pm '];
 function getRandomNumber(min, max) {
   var random = Math.random(); // 0 - 1
-  random = (random * (max - min + 1)) + min; // less than or equal max
-  random = Math.floor(random); // remove fractions
+  random =Math.floor( (random * (max - min + 1)) + min); // less than or equal max
   return random;
 }
 
@@ -14,13 +13,13 @@ function City(name, minCus, maxCus, avgCookies) {
   this.minCus = minCus;
   this.maxCus = maxCus;
   this.avgCookies = avgCookies;
-  this.total = 0;
+  
   this.numofcook = [];
-  this.arr = [];
+  this.arr = [];// to store all random num 
   cities.push(this);
 }
 City.prototype.CusPerHours=function(){
-  for (let index = 0; index < hours.length; index++) {
+  for (var index = 0; index < hours.length; index++) {
     var i = getRandomNumber(this.minCus, this.maxCus);
     console.log(i);
     this.arr.push(i);
@@ -34,21 +33,27 @@ City.prototype.cookforper=function(){
     console.log(x);
     this.numofcook.push(x);
     emptyArr[i]+=this.numofcook[i];
+   
+
   }
+  console.log('****empty array************');
+  console.log(emptyArr);
+  console.log('*******empty array*********');
 };
 City.prototype.totals=function(){
-  for (let j = 0; j < hours.length; j++) {
+  this.total = 0;
+  for (var  j = 0; j < hours.length; j++) {
     this.total += this.numofcook[j];
-    emptyArr[15]+=this.total;
-
   }
-  console.log(this.total);
-
+  emptyArr[14]+=this.total;
+  console.log(' tooooooooooooooooooootal'+this.total);
+  console.log(' tooooooooooooooooooootal'+ emptyArr[15]);
   return this.total;
-
 };
+
+
 City.prototype.render=function(){
-  this.cookforper();
+  // this.cookforper();
     var table = document.getElementById('div-table');
     // make a tr
     var tr = document.createElement('tr');
@@ -65,7 +70,8 @@ City.prototype.render=function(){
     td.textContent = this.totals();
     tr.appendChild(td);
     table.appendChild(tr);
-  }
+  };
+
   tableHead();
   var table;
   function tableHead(){
@@ -87,32 +93,38 @@ City.prototype.render=function(){
       }
     }
   }
+
+  //form event lisner... 
   var form= document.getElementById('mainForm');
   form.addEventListener('submit',function(event){
     event.preventDefault();
     console.log(event);
     var name = event.target.nname.value;
-    
+   console.log('name: ', name);
+   var min=event.target.mminNum.value;
+   min=Number(min);
 
-  console.log('name: ', name);
-  var min=event.target.mminNum.value;
-  min=Number(min);
+   console.log('min: ', min);
+   var max=event.target.mmaxNum.value;
+   max=Number(max);
+   console.log('max: ', max);
+   var avg=event.target.avgNum.value;
+   avg=Number(avg);
+   console.log('avg: ', avg);
+   emptyArr=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+   
+   var newc=new City(name,min,max,avg);
+   table.textContent=' ';
+   
+   tableHead();
+   renderStore();
+   tfoot();
 
-  console.log('min: ', min);
-  var max=event.target.mmaxNum.value;
-  max=Number(max);
-  console.log('max: ', max);
-  var avg=event.target.avgNum.value;
-  avg=Number(avg);
-  avg=Number(avg);
-  console.log('avg: ', avg);
-  var newc=new City(name,min,max,avg);
-  newc.CusPerHours();
-  newc.cookforper();
-  newc.render();
-  });
+  //  newc.CusPerHours();
+  //  newc.cookforper();
+  //  newc.render();
+   });
   
-
 
   //calculate hourly total cookies for all five stores.
 function tfoot(){
@@ -145,34 +157,76 @@ for(var i=0;i<=hours.length+1;i++){
 // Paris	20	38	2.3
 // Lima	2	16	4.6
 var s=new City('seattle',23,65,6.3);
-
-// function renderStore() {
-//   for (var i = 0; i < allStore.length; i++) {
-//     cities[i].render();
-//   }
-// }
-
-
-s.CusPerHours();
-s.cookforper();
-s.render();
-var t=new City('Tokyo',3,24,1.2);
-t.CusPerHours();
-t.cookforper();
-t.render();
-var d=new City('Dubai',11,38,3.7);
-d.CusPerHours();
-d.cookforper();
-d.render();
-var p=new City('Paris',20,38,2.3);
-p.CusPerHours();
-p.cookforper();
-p.render();
 var l=new City('Lima',2,16,4.6);
-l.CusPerHours();
-l.cookforper();
-l.render();
+var t=new City('Tokyo',3,24,1.2);
+var d=new City('Dubai',11,38,3.7);
+var p=new City('Paris',20,38,2.3);
+
+function renderStore() {
+  for (var i = 0; i < cities.length; i++) {
+    cities[i].CusPerHours();
+    cities[i].cookforper();
+    cities[i].render();
+  }
+}
+renderStore();
 tfoot();
+
+
+
+
+
+// s.CusPerHours();
+// s.cookforper();
+// s.render();
+// t.CusPerHours();
+// t.cookforper();
+// t.render();
+// d.CusPerHours();
+// d.cookforper();
+// d.render();
+// p.CusPerHours();
+// p.cookforper();
+// p.render();
+// l.CusPerHours();
+// l.cookforper();
+// l.render();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // // //////////////////////Using object 
